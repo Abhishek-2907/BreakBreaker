@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>brick breaker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: bisque;
+      color: brown;
+    }
+    
+    #game-heading {
+      font-size: 100px;
+      margin-top: 20px;
+    }
+
+    #executeBtn {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 50px;
+      border-radius: 10px;
+      background-color:greenyellow;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #press-button{
+        color: blueviolet;
+        font-size: 50px;
+        margin-top: 20px;
+    }
+  </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1 id="game-heading">Break breaker Game!!</h1>
+  <h2 id="press-button">Press the start to start the game...</h2>
+    <button id="executeBtn">Start Game</button>
+
+     <script>
+        $(document).ready(function() {
+            $('#executeBtn').click(function() {
+                $.ajax({
+                    url: '/run_python_code',
+                    type: 'POST',
+                    success: function(response) {
+                        alert(response.message);
+                    },
+                    error: function(error) {
+                        alert('An error occurred: ' + error.responseText);
+                    }
+                });
+            });
+        });
+    </script> 
+</body>
+</html>
